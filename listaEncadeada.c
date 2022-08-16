@@ -55,4 +55,5 @@ int main(void){
     }
     free(elementoAtual);
     return 0;
+    
 }
