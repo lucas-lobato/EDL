@@ -1,0 +1,20 @@
+data Lista a = No a (Lista a) | Vazio
+
+l = No 10 (No 20 (No 30 Vazio))
+
+--m = map (*2) l
+m = filter (>10) l
+
+--map :: (a -> b) -> Lista a -> Lista b
+filter :: (a → Bool) → Lista a → Lista a
+
+--map f l = 
+    --case l of
+        --Vazio -> Vazio
+        --No x m -> No (f x) (map f m)
+
+filter f l = 
+    case l of
+        Vazio -> Vazio
+        No x m -> No (f x) (filter f m)
+
