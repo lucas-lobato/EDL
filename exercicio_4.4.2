@@ -1,6 +1,5 @@
-data Arvore a = Galho (Arvore a) a (Arvore a) 
-              | Folha
-  deriving Show
+data Arvore a = Galho (Arvore a) a (Arvore a) Folha
+    deriving (show)
 
 arvore :: Arvore Int
 arvore = Galho (Galho (Galho Folha 1 Folha)
@@ -14,9 +13,5 @@ arvore = Galho (Galho (Galho Folha 1 Folha)
 mapA :: (a -> b) -> Arvore a -> Arvore b
 mapA f a =
     case a of
-        Folha -> Folha
-        (Galho e _ d) x m -> Galho (f x) (mapA f m)
-
-arvore2 = mapA (*2) arvore
-main = print $ arvore2
-
+        Vazio -> Vazio
+        Galho x m -> Galho (f x) (map f m)
